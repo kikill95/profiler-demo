@@ -2,7 +2,7 @@ const testCases = require('./testCases')
 const diceCoefficient = require('./index')
 const timer = require('./timer')
 
-const times = 1000
+const times = 100000
 let results = []
 let counter
 
