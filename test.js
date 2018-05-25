@@ -1,9 +1,12 @@
 const testCases = require('./testCases')
 const diceCoefficient = require('./index')
+const timer = require('./timer')
 
 const times = 1000
 let results = []
 let counter
+
+timer.time('metrics', 'wrapper')
 
 for (counter = 0; counter < 100; counter++) {
   testCases.forEach(([case1, case2]) => {
@@ -17,4 +20,11 @@ for (counter = 0; counter < 100; counter++) {
   })
 }
 
-console.log(results.filter(el => el.coefficient > 0.5))
+timer.timeEnd('metrics', 'wrapper')
+timer.time('metrics', 'before-filter')
+
+let filtered = results.filter(el => el.coefficient > 0.5)
+
+timer.timeEnd('metrics', 'before-filter')
+
+timer.logAll()
